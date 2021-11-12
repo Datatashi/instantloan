@@ -11,22 +11,23 @@ img = Image.open("./logoai.png")
 
 st.sidebar.image(img, width= 200)
 
+pickle_in = open('model.pkl', 'rb')
+model = pickle.load(pickle_in)
+# df = pd.read_csv("./il.csv")
 
-df = pd.read_csv("./il.csv")
+# df['LOAN_STATUS'] = (
+#                 (df['AGE'].gt(17))
+#                 &(df['CREDIT_CARD'].eq(1))
+#                 &(df['CURR_BAL'].gt(2500))
+#             ).astype(int)
 
-df['LOAN_STATUS'] = (
-                (df['AGE'].gt(17))
-                &(df['CREDIT_CARD'].eq(1))
-                &(df['CURR_BAL'].gt(2500))
-            ).astype(int)
+# X = data_ml.iloc[0:764,0:3]
+# y = data_ml.iloc[0:764,3]
 
-X = data_ml.iloc[0:764,0:3]
-y = data_ml.iloc[0:764,3]
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-
-model = DecisionTreeRegressor(random_state=1)
-model.fit(X_train, y_train)
+# model = DecisionTreeRegressor(random_state=1)
+# model.fit(X_train, y_train)
 
 
 def main():
