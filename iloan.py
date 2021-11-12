@@ -11,7 +11,7 @@ st.set_page_config(page_title="iLoan",
                    layout= "wide")
 st.sidebar.image(img, width= 200)
 
-pickle_in = open('rf.sav', 'rb')
+pickle_in = open('rf.pkl', 'rb')
 
 model = pickle.load(pickle_in)
 # model = pickle.load(open("model.sav", "rb"))
