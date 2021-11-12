@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import pickle
 
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.preprocessing import LabelEncoder
 from PIL import Image
 
 img = Image.open("./logoai.png")
@@ -9,7 +12,27 @@ img = Image.open("./logoai.png")
 
 st.sidebar.image(img, width= 200)
 
-model = pickle.load(open("model.sav", "rb"))
+
+df = pd.read_csv("./data_il.csv")
+
+le = LabelEncoder()
+df["CREDIT_CARD"] = le.fit_transform(df["CREDIT_CARD"])
+
+
+df['LOAN_STATUS'] = (
+                (df['AGE'].gt(17))
+                &(df['CREDIT_CARD'].eq(1))
+                &(df['CURR_BAL'].gt(2500))
+            ).astype(int)
+
+X = data_ml.iloc[0:764,0:3]
+y = data_ml.iloc[0:764,3]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+model = DecisionTreeRegressor(random_state=1)
+model.fit(X_train, y_train)
+
 
 def main():
     st.subheader("The Application with Artificial Intelligence.")
