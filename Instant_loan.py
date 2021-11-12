@@ -2,9 +2,8 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import train_test_split
 from PIL import Image
 
 img = Image.open("./logoai.png")
@@ -14,10 +13,6 @@ st.sidebar.image(img, width= 200)
 
 
 df = pd.read_csv("./il.csv")
-
-le = LabelEncoder()
-df["CREDIT_CARD"] = le.fit_transform(df["CREDIT_CARD"])
-
 
 df['LOAN_STATUS'] = (
                 (df['AGE'].gt(17))
