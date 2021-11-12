@@ -13,7 +13,7 @@ img = Image.open("./logoai.png")
 st.sidebar.image(img, width= 200)
 
 
-df = pd.read_csv("./data_il.csv")
+df = pd.read_csv("./il.csv")
 
 le = LabelEncoder()
 df["CREDIT_CARD"] = le.fit_transform(df["CREDIT_CARD"])
