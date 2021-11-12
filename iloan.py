@@ -4,7 +4,7 @@ import pickle
 
 from PIL import Image
 
-img = Image.open("D:/AI/logoai.png")
+img = Image.open("./logoai.png")
 
 st.set_page_config(page_title="iLoan",
                    page_icon=img,
